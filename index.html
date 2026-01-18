@@ -1,94 +1,71 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roleta de Personagem – RPG Medieval</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #1e1e1e;
-      color: #f5f5f5;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .section {
-      background: #2b2b2b;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-    }
-    button {
-      background: #8b5cf6;
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: #7c3aed;
-    }
-    .result {
-      margin-top: 10px;
-      font-size: 1.1em;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de Personagem RPG Medieval</title>
+<style>
+body{background:#1b1b1b;color:#f5f5f5;font-family:Georgia,serif;padding:20px}
+h1{text-align:center}
+.section{background:#262626;padding:16px;margin-bottom:18px;border-radius:10px;box-shadow:0 0 10px #000}
+button{background:#7c3aed;color:#fff;border:none;padding:10px 16px;border-radius:8px;font-size:1em;cursor:pointer;margin-top:10px}
+button:hover{background:#6d28d9}
+.card{margin-top:12px;background:#1f1f1f;padding:12px;border-radius:8px}
+.card img{max-width:160px;border-radius:8px;margin-top:8px}
+#full{background:#111;padding:20px;border-radius:12px;margin-top:30px}
+</style>
 </head>
 <body>
-  <h1>🎲 Roleta de Criação de Personagem – RPG Medieval</h1>  <div class="section">
-    <h2>Classe</h2>
-    <button onclick="roll('classe')">Girar</button>
-    <div class="result" id="classe"></div>
-  </div>  <div class="section">
-    <h2>Espécie</h2>
-    <button onclick="roll('especie')">Girar</button>
-    <div class="result" id="especie"></div>
-  </div>  <div class="section">
-    <h2>Trabalho / Posição Social</h2>
-    <button onclick="roll('trabalho')">Girar</button>
-    <div class="result" id="trabalho"></div>
-  </div>  <div class="section">
-    <h2>Pet / Companheiro</h2>
-    <button onclick="roll('pet')">Girar</button>
-    <div class="result" id="pet"></div>
-  </div>  <div class="section">
-    <h2>Arma</h2>
-    <button onclick="roll('arma')">Girar</button>
-    <div class="result" id="arma"></div>
-  </div>  <div class="section">
-    <h2>Poder</h2>
-    <button onclick="roll('poder')">Girar</button>
-    <div class="result" id="poder"></div>
-  </div>  <script>
-    const data = {
-      classe: [
-        'Cavaleiro juramentado','Clero itinerante','Monge copista','Soldado do reino','Guarda da cidade','Escudeiro ambicioso','Caçador das florestas','Mago aprendiz','Mago eremita','Bruxa do vilarejo','Paladino da luz','Templário','Mercenário','Ladino de estrada','Assassino da guilda','Bardo trovador','Alquimista','Druida','Necromante proibido','Camponês armado'
-      ],
-      especie: [
-        'Humano','Elfo da floresta','Elfo urbano','Anão das montanhas','Anão ferreiro','Meio-elfo','Meio-orc','Halfling','Gnomo','Tiefling','Aasimar','Homem-lagarto','Fada menor','Espírito encarnado','Amaldiçoado'
-      ],
-      trabalho: [
-        'Camponês','Servo feudal','Trabalhador rural','Lenhador','Ferreiro','Aprendiz de ferreiro','Moleiro','Padeiro','Caçador','Comerciante','Mercador viajante','Estalajadeiro','Mensageiro do reino','Escriba','Curandeiro','Membro do clero','Monge','Senhor feudal menor','Nobre decadente','Herdeiro ilegítimo'
-      ],
-      pet: [
-        'Cão de caça','Cavalo leal','Falcão mensageiro','Corvo observador','Gato de rua','Lobo','Javali domesticado','Serpente','Coruja','Espírito ancestral fraco','Criatura feérica pequena','Cavalo espectral','Rato esperto','Corcel de guerra','Nenhum'
-      ],
-      arma: [
-        'Faca','Adaga','Espada curta','Espada longa','Espada bastarda','Espadão','Machado','Machado de guerra','Martelo de guerra','Lança','Alabarda','Foice adaptada','Clava','Cajado','Arco curto','Arco longo','Besta','Mangual','Chicote','Punhos','Livro sagrado','Relíquia antiga','Arma amaldiçoada','Arma herdada','Nenhuma'
-      ],
-      poder: [
-        'Cura básica','Benção divina','Aura de coragem','Controle de fogo','Controle de água','Controle de vento','Controle da terra','Comunicação com animais','Visões do futuro','Magia de proteção','Ilusão','Invocar espírito menor','Reanimar mortos fracos','Resistência sobre-humana','Força aumentada','Velocidade aumentada','Regeneração lenta','Sentir magia','Anular magia','Sombra viva','Voz hipnótica','Maldição hereditária','Poder ativado com dor','Pacto com entidade','Nenhum poder'
-      ]
-    };
+<h1>🎲 Gerador de Personagem – RPG Medieval</h1><div id="full">
+<h2>Personagem Completo</h2>
+<button onclick="generateAll()">GERAR PERSONAGEM</button>
+<div id="result"></div>
+</div><script>
+const placeholder = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Medieval_manuscript_blank_figure.png/240px-Medieval_manuscript_blank_figure.png';
 
-    function roll(type) {
-      const arr = data[type];
-      const result = arr[Math.floor(Math.random() * arr.length)];
-      document.getElementById(type).innerText = result;
-    }
-  </script></body>
+const data={
+classe:[
+{n:'Cavaleiro Juramentado',d:'Guerreiro ligado a um juramento sagrado.',i:placeholder},
+{n:'Clero Itinerante',d:'Sacerdote viajante que espalha a fé.',i:placeholder},
+{n:'Monge Copista',d:'Guardião do conhecimento escrito.',i:placeholder},
+{n:'Mercenário',d:'Luta por ouro, não por bandeiras.',i:placeholder},
+{n:'Camponês Armado',d:'Pessoa comum forçada ao conflito.',i:placeholder}
+],
+especie:[
+{n:'Humano',d:'Adaptável e dominante nos reinos.',i:placeholder},
+{n:'Elfo da Floresta',d:'Ser antigo ligado à natureza.',i:placeholder},
+{n:'Anão',d:'Resistente e mestre da forja.',i:placeholder},
+{n:'Meio-Orc',d:'Força bruta e preconceito.',i:placeholder}
+],
+trabalho:[
+{n:'Ferreiro',d:'Forja armas e ferramentas.',i:placeholder},
+{n:'Camponês',d:'Trabalhador rural sob regime feudal.',i:placeholder},
+{n:'Estalajadeiro',d:'Dono de taverna cheia de rumores.',i:placeholder}
+],
+arma:[
+{n:'Espada Longa',d:'Equilibrada e nobre.',i:placeholder},
+{n:'Machado',d:'Bruto e eficaz.',i:placeholder},
+{n:'Foice Adaptada',d:'Ferramenta rural mortal.',i:placeholder}
+],
+poder:[
+{n:'Cura Básica',d:'Restaura ferimentos leves.',i:placeholder},
+{n:'Aura de Coragem',d:'Inspira aliados.',i:placeholder},
+{n:'Nenhum',d:'Sobrevive pela própria força.',i:placeholder}
+],
+pet:[
+{n:'Cão de Caça',d:'Leal e protetor.',i:placeholder},
+{n:'Corvo',d:'Observador silencioso.',i:placeholder},
+{n:'Nenhum',d:'Segue sozinho.',i:placeholder}
+]
+};
+
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+
+function generateAll(){
+const r=document.getElementById('result');
+r.innerHTML='';
+for(let k in data){
+const o=pick(data[k]);
+r.innerHTML+=`<div class="card"><strong>${k.toUpperCase()}</strong><br><b>${o.n}</b><br>${o.d}<br><img src="${o.i}"></div>`}
+}
+</script></body>
 </html>
