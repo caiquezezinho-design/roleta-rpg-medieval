@@ -2,43 +2,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roleta RPG Medieval</title>
+<title>Ficha de Personagem – RPG Medieval</title>
 <style>
-body{background:#1b1b1b;color:#f5f5f5;font-family:Georgia,serif;padding:20px}
-h1{text-align:center}
-.section{background:#262626;padding:16px;margin-bottom:18px;border-radius:10px;box-shadow:0 0 10px #000}
-button{background:#7c3aed;color:#fff;border:none;padding:10px 16px;border-radius:8px;font-size:1em;cursor:pointer;margin-top:10px}
-button:hover{background:#6d28d9}
-.result{margin-top:12px;background:#1f1f1f;padding:12px;border-radius:8px}
-strong{font-size:1.1em}
-</style>
+body{
+  background:#2b1d0e;
+  background-image:radial-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.9));
+  color:#2a1a0b;
+  font-family:'Georgia',serif;
+  padding:20px;
+}h1{ text-align:center; color:#3b2614; letter-spacing:2px; }
+
+.sheet{ max-width:900px; margin:auto; background:#f3e6c9; padding:30px; border-radius:12px; box-shadow:0 0 40px rgba(0,0,0,0.8); border:8px solid #c2a26d; }
+
+.section{ border:2px solid #c2a26d; padding:15px; margin-bottom:18px; background:rgba(255,248,230,0.8); }
+
+.section h2{ margin-top:0; color:#4a321c; border-bottom:1px solid #c2a26d; }
+
+button{ background:#7a4a1d; color:#fff; border:none; padding:8px 14px; border-radius:6px; font-size:0.9em; cursor:pointer; }
+
+button:hover{ background:#5e3715; }
+
+.result{ margin-top:10px; padding:10px; border-left:4px solid #7a4a1d; background:#fff8e6; }
+
+strong{ font-size:1.05em; } </style>
+
 </head>
 <body>
-<h1>🎲 Roleta de Criação de Personagem – RPG Medieval</h1><div class="section">
+<h1>📜 Ficha de Criação de Personagem</h1><div class="sheet"><div class="section">
 <h2>Classe</h2>
-<button onclick="roll('classe')">Girar</button>
+<button onclick="roll('classe')">Sortear</button>
 <div class="result" id="classe"></div>
 </div><div class="section">
 <h2>Espécie</h2>
-<button onclick="roll('especie')">Girar</button>
+<button onclick="roll('especie')">Sortear</button>
 <div class="result" id="especie"></div>
 </div><div class="section">
 <h2>Trabalho / Posição Social</h2>
-<button onclick="roll('trabalho')">Girar</button>
+<button onclick="roll('trabalho')">Sortear</button>
 <div class="result" id="trabalho"></div>
 </div><div class="section">
 <h2>Pet / Companheiro</h2>
-<button onclick="roll('pet')">Girar</button>
+<button onclick="roll('pet')">Sortear</button>
 <div class="result" id="pet"></div>
 </div><div class="section">
 <h2>Arma</h2>
-<button onclick="roll('arma')">Girar</button>
+<button onclick="roll('arma')">Sortear</button>
 <div class="result" id="arma"></div>
 </div><div class="section">
 <h2>Poder / Habilidade</h2>
-<button onclick="roll('poder')">Girar</button>
+<button onclick="roll('poder')">Sortear</button>
 <div class="result" id="poder"></div>
-</div><script>
+</div></div><script>
 const data={
 classe:[
 {n:'Cavaleiro Juramentado',d:'Guerreiro ligado por juramento sagrado a um senhor ou causa.'},
