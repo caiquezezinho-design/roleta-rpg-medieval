@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roleta de Personagem – RPG Medieval</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section {
+      background: #2b2b2b;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+    button {
+      background: #8b5cf6;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #7c3aed;
+    }
+    .result {
+      margin-top: 10px;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Roleta de Criação de Personagem – RPG Medieval</h1>  <div class="section">
+    <h2>Classe</h2>
+    <button onclick="roll('classe')">Girar</button>
+    <div class="result" id="classe"></div>
+  </div>  <div class="section">
+    <h2>Espécie</h2>
+    <button onclick="roll('especie')">Girar</button>
+    <div class="result" id="especie"></div>
+  </div>  <div class="section">
+    <h2>Trabalho / Posição Social</h2>
+    <button onclick="roll('trabalho')">Girar</button>
+    <div class="result" id="trabalho"></div>
+  </div>  <div class="section">
+    <h2>Pet / Companheiro</h2>
+    <button onclick="roll('pet')">Girar</button>
+    <div class="result" id="pet"></div>
+  </div>  <div class="section">
+    <h2>Arma</h2>
+    <button onclick="roll('arma')">Girar</button>
+    <div class="result" id="arma"></div>
+  </div>  <div class="section">
+    <h2>Poder</h2>
+    <button onclick="roll('poder')">Girar</button>
+    <div class="result" id="poder"></div>
+  </div>  <script>
+    const data = {
+      classe: [
+        'Cavaleiro juramentado','Clero itinerante','Monge copista','Soldado do reino','Guarda da cidade','Escudeiro ambicioso','Caçador das florestas','Mago aprendiz','Mago eremita','Bruxa do vilarejo','Paladino da luz','Templário','Mercenário','Ladino de estrada','Assassino da guilda','Bardo trovador','Alquimista','Druida','Necromante proibido','Camponês armado'
+      ],
+      especie: [
+        'Humano','Elfo da floresta','Elfo urbano','Anão das montanhas','Anão ferreiro','Meio-elfo','Meio-orc','Halfling','Gnomo','Tiefling','Aasimar','Homem-lagarto','Fada menor','Espírito encarnado','Amaldiçoado'
+      ],
+      trabalho: [
+        'Camponês','Servo feudal','Trabalhador rural','Lenhador','Ferreiro','Aprendiz de ferreiro','Moleiro','Padeiro','Caçador','Comerciante','Mercador viajante','Estalajadeiro','Mensageiro do reino','Escriba','Curandeiro','Membro do clero','Monge','Senhor feudal menor','Nobre decadente','Herdeiro ilegítimo'
+      ],
+      pet: [
+        'Cão de caça','Cavalo leal','Falcão mensageiro','Corvo observador','Gato de rua','Lobo','Javali domesticado','Serpente','Coruja','Espírito ancestral fraco','Criatura feérica pequena','Cavalo espectral','Rato esperto','Corcel de guerra','Nenhum'
+      ],
+      arma: [
+        'Faca','Adaga','Espada curta','Espada longa','Espada bastarda','Espadão','Machado','Machado de guerra','Martelo de guerra','Lança','Alabarda','Foice adaptada','Clava','Cajado','Arco curto','Arco longo','Besta','Mangual','Chicote','Punhos','Livro sagrado','Relíquia antiga','Arma amaldiçoada','Arma herdada','Nenhuma'
+      ],
+      poder: [
+        'Cura básica','Benção divina','Aura de coragem','Controle de fogo','Controle de água','Controle de vento','Controle da terra','Comunicação com animais','Visões do futuro','Magia de proteção','Ilusão','Invocar espírito menor','Reanimar mortos fracos','Resistência sobre-humana','Força aumentada','Velocidade aumentada','Regeneração lenta','Sentir magia','Anular magia','Sombra viva','Voz hipnótica','Maldição hereditária','Poder ativado com dor','Pacto com entidade','Nenhum poder'
+      ]
+    };
+
+    function roll(type) {
+      const arr = data[type];
+      const result = arr[Math.floor(Math.random() * arr.length)];
+      document.getElementById(type).innerText = result;
+    }
+  </script></body>
+</html>
